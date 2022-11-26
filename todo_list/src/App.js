@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import {v4 as uuid} from "uuid"
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
@@ -19,7 +20,7 @@ function App() {
 
   const addTodo = (title) => {
     const todo = {
-      id: 5,
+      id: uuid(),
       title: title,
       isCompleted: false,
     };
