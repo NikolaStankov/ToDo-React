@@ -1,12 +1,14 @@
 import React, { useEffect, useCallback, useState, createContext } from "react";
 
-const initialGlobalState = [];
+const initialGlobalState = {
+  todos: []
+};
 
 // Create a Context for the (global) State
 const GlobalState = createContext();
 
-export const GlobalStateProvider = ({ children }) => {
-  const [todos, setTodos] = useState(initialGlobalState ?? []);
+const GlobalStateProvider = ({ children }) => {
+  const [todos, setTodos] = useState(initialGlobalState ?? {});
 
   const setGlobalState = useCallback(
     (data = {}) => {
@@ -32,6 +34,8 @@ export const GlobalStateProvider = ({ children }) => {
     <GlobalState.Provider value={todos}>{children}</GlobalState.Provider>
   );
 };
+
+export const useGlobalState = () => React.useContext(GlobalState)
 
 export default GlobalStateProvider;
 window.GlobalState = GlobalState;

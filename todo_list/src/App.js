@@ -1,21 +1,20 @@
 import { v4 as uuid } from "uuid";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
-import GlobalState from "./components/GlobalStateProvider";
-import { useContext } from "react";
+import { useGlobalState } from "./components/GlobalStateProvider";
 
 function App() {
-  const { todos } = useContext(GlobalState);
+  const { todos } = useGlobalState(window.GlobalState);
 
   const checkTodo = (id) => {
-    GlobalState.set(
-      todos.map((todo) => {
+    window.GlobalState.set({
+      todos: todos.map((todo) => {
         if (todo.id === id) {
           todo.isCompleted = !todo.isCompleted;
         }
         return todo;
-      })
-    );
+      }),
+    });
   };
 
   const addTodo = (title) => {
@@ -25,11 +24,11 @@ function App() {
       isCompleted: false,
     };
 
-    GlobalState.set([...todos, todo]);
+    window.GlobalState.set({ todos: [...todos, todo] });
   };
 
   const deleteTodo = (id) => {
-    GlobalState.set(todos.filter((todo) => todo.id !== id));
+    window.GlobalState.set({ todos: todos.filter((todo) => todo.id !== id) });
   };
 
   return (
