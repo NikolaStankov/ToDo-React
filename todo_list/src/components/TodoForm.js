@@ -24,7 +24,7 @@ const TodoForm = ({ addTodo }) => {
             variant="contained"
             color="primary"
             type="submit"
-            style={{ marginTop: 10 }}
+            style={{ marginTop: 10, borderRadius: "20px" }}
           >
             Add todo
           </Button>

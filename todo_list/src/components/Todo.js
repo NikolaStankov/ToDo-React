@@ -22,12 +22,12 @@ const Todo = ({ title, checkTodo, id, isCompleted, deleteTodo }) => {
     
   return (
     <div>
-      <Container>
+      <Container style={{display: "flex", flexDirection:"column" , justifyContent: "Center", alignItems: "Center"}}>
         <Card
           variant="outlined"
-          style={{ marginTop: 35, background: "lightgray" }}
+          style={{ marginTop: 35, background: "rgb(222, 221, 220, 0.2)", borderRadius : "20px", width: "98%", border: "none", boxShadow: "2px 4px rgb(222, 221, 220, 0.5)"}}
         >
-          <CardContent>
+        <CardContent style={{padding: "10px"}} >
             <Typography variant="h5" component="h2" style={todoStyle}>
               <IconButton onClick={handleCheck}>
                 <Check style={{ color: "green" }} />
@@ -39,7 +39,7 @@ const Todo = ({ title, checkTodo, id, isCompleted, deleteTodo }) => {
             </Typography>
           </CardContent>
         </Card>
-      </Container>
+      </Container>  
     </div>
   );
 };
